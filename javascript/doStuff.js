@@ -1,21 +1,25 @@
 //create grid using javascript:
 function createGrid() {
-    const container = document.getSelection(".container");
-    const tbl = document.createElement('table');
-    tbl.style.width = '1000px';
-    tbl.style.height = '1000px';
+    const container = document.querySelector(".container");
+    console.log(container);
+    var tbl = document.createElement('table');
+    tbl.style.width = '800px';
+    tbl.style.height = '800px';
 
     //16*16
     for(let i = 0; i < 16; i++)
     {
-        const tableRow = tbl.insertRow();
+        var tr = tbl.insertRow();
+        tr.style.margin = 0;
+        tr.style.border = "1px solid black";
         for(let j = 0; j < 16; j++)
         {
-            const tableCell = tr.insertCell();
-            tableCell.appendChild(document.createTextNode(`Cell I${i}/J${j}`));
-            tableCell.style.border = `1px solid black`;
+            var tc = tr.insertCell();
+            tc.style.border = "1px solid black";
+            tc.style.margin = 0;
         }
     }
     container.appendChild(tbl);
 }
+
 createGrid();
