@@ -17,10 +17,41 @@ body{
     font-family:'Courier New', Courier, monospace;
 }
 
-td{
-   background-color: aliceblue; 
+.ui{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    flex: 0 0 1;
 }
 
-td:hover{/*temporary, needs to be permanent*/
+.box{
+    display:flex;
+    gap:100px;
+}
+button{
+    width: 80px;
+    height: 50px;
+    border-radius:8px;
+    color:white;
+}
+
+.red{
+    background-color:red;
+}
+.black{
     background-color: black;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: blue;
+}
+.yellow{
+    background-color: yellow;
+    color:black;
+}
+.rainbow{
+    background-color:darkmagenta;
 }
