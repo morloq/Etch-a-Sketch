@@ -20,7 +20,8 @@ function createGrid() {
             tableCell.style.border = "1px solid black";
             tableCell.style.backgroundColor = "white";
             tableCell.addEventListener("mouseover", () => {
-                tableCell.style.backgroundColor="orange";
+                tableCell.style.backgroundColor = randomColor();
+                console.log(randomColor());
             });
         }
     }
@@ -76,11 +77,35 @@ function drawNewGrid(rows, cells){
             tableCell.style.padding = 0;
             tableCell.style.backgroundColor = "white";
             tableCell.addEventListener("mouseover", () => {
-                tableCell.style.backgroundColor="orange";
+                tableCell.style.backgroundColor = randomColor();
             });
         }
     }
     container.appendChild(table);
 }
+
+
+//generate random number between 0 and 255
+function randomNumber() {
+    let num;
+    num = Math.floor(Math.random() * (255 - 0 +1) + 0);//random number between 0 and 255
+    return num;
+}
+
+//random color in rgb format:
+function randomColor() {
+    let color = "rgb(";
+    for(i = 0; i < 3; i++) {
+        color += randomNumber();
+        for(j = 0; j < 1; j++) {
+            if(i != 2){
+                color += ",";
+            }
+        }
+    }
+    color += ")";
+    return color;
+}
+
 createGrid();
 updateValuesAndGrid();
