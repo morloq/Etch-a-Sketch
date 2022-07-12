@@ -6,8 +6,9 @@ function createGrid() {
     table = document.createElement('table');
     table.style.width = '800px';
     table.style.height = '800px';
+    table.style.borderSpacing = 0;
 
-    //16*16
+    //initial size: 16*16
     for(i = 0; i < 16; i++)
     {
         let tableRow = table.insertRow();
@@ -17,8 +18,6 @@ function createGrid() {
         {
             let tableCell = tableRow.insertCell();
             tableCell.style.border = "1px solid black";
-            tableCell.style.margin = 0;
-            tableCell.style.padding = 1;
             tableCell.style.backgroundColor = "white";
             tableCell.addEventListener("mouseover", () => {
                 tableCell.style.backgroundColor="orange";
@@ -40,12 +39,18 @@ document.querySelector(".submit").addEventListener("click", updateValuesAndGrid(
 function updateValuesAndGrid(){
     let rowsInput = document.querySelector(".rows");
     let cellsInput = document.querySelector(".cells");
+
     window.onload = function () {
         document.querySelector(".submit").addEventListener("click", () => {
-            
-            if(rowsInput.value <= 100){rows = rowsInput.value;}
+            if(rowsInput.value.length == 0 || isNaN(rowsInput.value)){
+                rows = 16;
+            }
+            if(cellsInput.value.length == 0 || isNaN(cellsInput.value)){
+                cells = 16;
+            }
+            if(rowsInput.value <= 100 && rowsInput.value > 0){rows = rowsInput.value;}
             else{rows = 16;}
-            if(cellsInput.value <= 100){cells = cellsInput.value;}
+            if(cellsInput.value <= 100 && cellsInput.value > 0){cells = cellsInput.value;}
             else{cells = 16;}
             eraseOldGrid();
             drawNewGrid(rows, cells);
@@ -68,7 +73,7 @@ function drawNewGrid(rows, cells){
             let tableCell = tableRow.insertCell();
             tableCell.style.border = "1px solid black";
             tableCell.style.margin = 0;
-            tableCell.style.padding = 1;
+            tableCell.style.padding = 0;
             tableCell.style.backgroundColor = "white";
             tableCell.addEventListener("mouseover", () => {
                 tableCell.style.backgroundColor="orange";
@@ -79,4 +84,3 @@ function drawNewGrid(rows, cells){
 }
 createGrid();
 updateValuesAndGrid();
-//how to delete old grid??, redrawing works but obviously the old grid is still there
