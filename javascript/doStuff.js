@@ -1,20 +1,21 @@
-//create grid using javascript:
 const container = document.querySelector(".container");
-let rows, cells, table;
-
-function createGrid() {
-    table = document.createElement('table');
+let rows = 16;
+let cells = 16;
+let table;
+table = document.createElement('table');
+//create grid using javascript:
+function Grid(rows, cells) {
     table.style.width = '800px';
     table.style.height = '800px';
     table.style.borderSpacing = 0;
 
     //initial size: 16*16
-    for(i = 0; i < 16; i++)
+    for(i = 0; i < rows; i++)
     {
         let tableRow = table.insertRow();
         tableRow.style.margin = 0;
         tableRow.style.border = "1px solid black";
-        for(j = 0; j < 16; j++)
+        for(j = 0; j < cells; j++)
         {
             let tableCell = tableRow.insertCell();
             tableCell.style.border = "1px solid black";
@@ -53,37 +54,11 @@ function updateValuesAndGrid(){
             else{rows = 16;}
             if(cellsInput.value <= 100 && cellsInput.value > 0){cells = cellsInput.value;}
             else{cells = 16;}
-            eraseOldGrid();
-            drawNewGrid(rows, cells);
+            table.textContent="";
+            Grid(rows,cells);
         });
     }
 }
-
-function eraseOldGrid(){
-    table.textContent="";
-}
-
-function drawNewGrid(rows, cells){
-    for(i = 0; i < rows; i++)
-    {
-        let tableRow = table.insertRow();
-        tableRow.style.margin = 0;
-        tableRow.style.border = "1px solid black";
-        for(j = 0; j < cells; j++)
-        {
-            let tableCell = tableRow.insertCell();
-            tableCell.style.border = "1px solid black";
-            tableCell.style.margin = 0;
-            tableCell.style.padding = 0;
-            tableCell.style.backgroundColor = "white";
-            tableCell.addEventListener("mouseover", () => {
-                tableCell.style.backgroundColor = randomColor();
-            });
-        }
-    }
-    container.appendChild(table);
-}
-
 
 //generate random number between 0 and 255
 function randomNumber() {
@@ -107,5 +82,5 @@ function randomColor() {
     return color;
 }
 
-createGrid();
+Grid(rows, cells);
 updateValuesAndGrid();
