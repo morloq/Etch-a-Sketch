@@ -1,6 +1,6 @@
 //create grid using javascript:
 const container = document.querySelector(".container");
-let rows, cells;
+let rows, cells, tbl;
 
 function createGrid() {
     tbl = document.createElement('table');
@@ -27,7 +27,6 @@ function createGrid() {
     container.appendChild(tbl);
 }
 
-createGrid();
 document.querySelector(".clickMe").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "flex";
 });
@@ -44,8 +43,12 @@ function updateValues(){
     let cellsInput = document.querySelector(".cells");
     window.onload = function () {
         document.querySelector(".submit").addEventListener("click", () => {
-            rows = rowsInput.value;
-            cells = cellsInput.value;
+            
+            if(rowsInput.value <= 100){rows = rowsInput.value;}
+            else{rows = 16;}
+            if(cellsInput.value <= 100){cells = cellsInput.value;}
+            else{cells = 16;}
+            
             console.log(rows);
             console.log(cells);
         });
@@ -75,5 +78,5 @@ function drawNewGrid(rows, cells){
     }
     container.appendChild(tbl);
 }
-
+createGrid();
 updateValues();
