@@ -22,7 +22,6 @@ body{
     flex-direction: column;
     align-items: center;
     gap:10px;
-    flex: 0 0 1;
 }
 
 .box{
@@ -36,22 +35,54 @@ button{
     color:white;
 }
 
-.red{
-    background-color:red;
+.clickMe{
+    background-color:orange;
+    box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
 }
-.black{
+
+
+.popup{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content{
+    height: 250px;
+    width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+input{
+    margin: 20px auto;
+    display: block;
+    width: 50%;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.close{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    margin: 5px;
+    width: 30px;
+    height: 20px;
+    background: black;
+}
+
+.submit{
     background-color: black;
-}
-.green{
-    background-color: green;
-}
-.blue{
-    background-color: blue;
-}
-.yellow{
-    background-color: yellow;
-    color:black;
-}
-.rainbow{
-    background-color:darkmagenta;
+    display:block;
+    margin: 10px auto;
+    width: 100px;
+    box-shadow: 6px 6px 29px -2px rgba(0,0,0,0.75);
 }
