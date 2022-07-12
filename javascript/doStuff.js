@@ -1,30 +1,31 @@
 //create grid using javascript:
 const container = document.querySelector(".container");
-let rows, cells, tbl;
+let rows, cells, table;
 
 function createGrid() {
-    tbl = document.createElement('table');
-    tbl.style.width = '800px';
-    tbl.style.height = '800px';
+    table = document.createElement('table');
+    table.style.width = '800px';
+    table.style.height = '800px';
 
     //16*16
     for(i = 0; i < 16; i++)
     {
-        let tr = tbl.insertRow();
-        tr.style.margin = 0;
-        tr.style.border = "1px solid black";
+        let tableRow = table.insertRow();
+        tableRow.style.margin = 0;
+        tableRow.style.border = "1px solid black";
         for(j = 0; j < 16; j++)
         {
-            let tc = tr.insertCell();
-            tc.style.border = "1px solid black";
-            tc.style.margin = 0;
-            tc.style.backgroundColor = "white";
-            tc.addEventListener("mouseover", () => {
-                tc.style.backgroundColor="orange";
+            let tableCell = tableRow.insertCell();
+            tableCell.style.border = "1px solid black";
+            tableCell.style.margin = 0;
+            tableCell.style.padding = 1;
+            tableCell.style.backgroundColor = "white";
+            tableCell.addEventListener("mouseover", () => {
+                tableCell.style.backgroundColor="orange";
             });
         }
     }
-    container.appendChild(tbl);
+    container.appendChild(table);
 }
 
 document.querySelector(".clickMe").addEventListener("click", () => {
@@ -34,11 +35,9 @@ document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "none";
 })
 
-document.querySelector(".submit").addEventListener("click", updateValues());
+document.querySelector(".submit").addEventListener("click", updateValuesAndGrid());
 
-function updateValues(){
-    /*Newrows = document.querySelector(".rows").value;
-    Newcells = document.querySelector(".cells").value;*/
+function updateValuesAndGrid(){
     let rowsInput = document.querySelector(".rows");
     let cellsInput = document.querySelector(".cells");
     window.onload = function () {
@@ -48,35 +47,36 @@ function updateValues(){
             else{rows = 16;}
             if(cellsInput.value <= 100){cells = cellsInput.value;}
             else{cells = 16;}
-            
+            eraseOldGrid();
             drawNewGrid(rows, cells);
         });
     }
 }
 
 function eraseOldGrid(){
-    
+    table.textContent="";
 }
 
 function drawNewGrid(rows, cells){
     for(i = 0; i < rows; i++)
     {
-        let tr = tbl.insertRow();
-        tr.style.margin = 0;
-        tr.style.border = "1px solid black";
+        let tableRow = table.insertRow();
+        tableRow.style.margin = 0;
+        tableRow.style.border = "1px solid black";
         for(j = 0; j < cells; j++)
         {
-            let tc = tr.insertCell();
-            tc.style.border = "1px solid black";
-            tc.style.margin = 0;
-            tc.style.backgroundColor = "white";
-            tc.addEventListener("mouseover", () => {
-                tc.style.backgroundColor="orange";
+            let tableCell = tableRow.insertCell();
+            tableCell.style.border = "1px solid black";
+            tableCell.style.margin = 0;
+            tableCell.style.padding = 1;
+            tableCell.style.backgroundColor = "white";
+            tableCell.addEventListener("mouseover", () => {
+                tableCell.style.backgroundColor="orange";
             });
         }
     }
-    container.appendChild(tbl);
+    container.appendChild(table);
 }
 createGrid();
-updateValues();
+updateValuesAndGrid();
 //how to delete old grid??, redrawing works but obviously the old grid is still there
