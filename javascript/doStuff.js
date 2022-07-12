@@ -49,8 +49,7 @@ function updateValues(){
             if(cellsInput.value <= 100){cells = cellsInput.value;}
             else{cells = 16;}
             
-            console.log(rows);
-            console.log(cells);
+            drawNewGrid(rows, cells);
         });
     }
 }
@@ -80,3 +79,4 @@ function drawNewGrid(rows, cells){
 }
 createGrid();
 updateValues();
+//how to delete old grid??, redrawing works but obviously the old grid is still there
